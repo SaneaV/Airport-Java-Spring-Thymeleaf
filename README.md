@@ -2,14 +2,14 @@
 This project is a preparation for the final exam at CEITI College. In a develope was used: Java, HTML, CSS, Spring (Boot, MVC, Data JPA), H2 database.
 
 Used Libraries:
-Spring Boot
-Spring MVC
-Spring Data JPA
-H2 Database
-FlyWay
-ModelMapper
+1) Spring Boot
+2) Spring MVC
+3) Spring Data JPA
+4) H2 Database
+5) FlyWay
+6) ModelMapper
 
-=================================================================================================================================================================================
+========================================================================================
 
 Develop an Airport application that will manage data from the Airport database. Each route is an object of the Route class with the properties CodeRoute, Destination, Class, Price, PassengerCode, where PassengerCode is the passenger's identification code. The passenger is an object of the Passenger class with the properties PassengerCode, Surname, Name, Phone. The application will save data in the database and contains the following:
 
@@ -24,7 +24,7 @@ c. Interfaces for:
 2) Search for passengers who have chosen the specified destination and the specified flight class;
 3) Displaying a list of all passengers for each trip and the total amount paid by passengers for the trip.
 
-=================================================================================================================================================================================
+========================================================================================
 
 Elaborați aplicația Aeroport care va gestiona datele din baza de date „Aeroport”. Fiecare rută are la bază clasa Rute caracterizată de câmpurile CodRuta, Destinatia, Clasa, Pret, CodPasager, unde CodPasager reprezintă codul de identificare al unui pasager. Un pasager are la bază clasa Pasager ce conține câmpurile CodPasager, NumePasager, PrenumePasager, Telefon. Aplicația va permite salvarea datelor în bază de date și va realiza următoarele:
 
@@ -39,7 +39,7 @@ c. Interfețele pentru:
 2) Căutarea și afișarea pasagerilor care au ales destinația specificată și clasa de zbor specificată;
 3) Afișarea pentru fiecare călătorie a listei pasagerilor și suma totală achitată de pasageri pentru călătorie.
 
-=================================================================================================================================================================================
+========================================================================================
 
 Разработайте приложение Airport, которое будет управлять данными из базы данных «Airport». Каждый маршрут является объектом класса Route со свойствами CodeRoute, Destination, Class, Price, PassengerCode, где PassengerCode представляет собой идентификационный код пассажира. Пассажир является объектом класса Passenger со свойствами PassengerCode, Surname, Name, Phone. Приложение позволит сохранить данные в базе данных и содержит следующее:
 
