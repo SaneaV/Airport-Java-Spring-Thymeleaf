@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Update route</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/main.css}"/>
+</head>
+<body>
+
+<div class="mainDiv">
+    <form action="#" th:action="@{/routes/update/{id}(id=${route.codeRoute})}" th:object="${route}"
+          method="get">
+
+        <br>
+        <label for="destination">Destination</label>
+        <input type="text" th:field="*{destination}" id="destination" placeholder="Destination">
+        <br><br>
+
+        <label for="classType">Class</label>
+        <input type="text" th:field="*{classType}" id="classType" placeholder="Class">
+        <br><br>
+
+        <label for="price">Price</label>
+        <input type="text" th:field="*{price}" id="price" placeholder="Price">
+        <br><br>
+
+        <label for="passengerCode">Passenger Code</label>
+        <input type="text" th:field="*{passengerCode}" id="passengerCode" placeholder="Passenger Code">
+        <br><br>
+
+        <input type="submit" value="Add Passenger">
+    </form>
+
+    <form action="/">
+        <input type="submit" value="Main page"/>
+    </form>
+</div>
+
+</body>
+</html>
