@@ -4,6 +4,7 @@ import com.pretestare.airport.dao.dto.PassengerDto;
 import com.pretestare.airport.dao.dto.RouteDto;
 import com.pretestare.airport.dao.dto.impl.PassengerDtoImpl;
 import com.pretestare.airport.dao.dto.impl.RouteDtoImpl;
+import com.pretestare.airport.dao.model.InnerJoin;
 import com.pretestare.airport.dao.model.Passenger;
 import com.pretestare.airport.dao.model.Route;
 import com.pretestare.airport.dao.repository.RouteRepository;
@@ -13,9 +14,9 @@ import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
 import java.math.BigInteger;
-import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
-import java.util.Map;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 @Service
@@ -70,15 +71,22 @@ public class RouteServiceImpl implements RouteService {
     }
 
     @Override
-    public Map<Long, Integer> sumTotalMoneyPerPassenger() {
-        Map<Long, Integer> mappedResult = new HashMap<>();
+    public Set<InnerJoin> sumTotalMoneyPerPassenger() {
+        Set<InnerJoin> set = new HashSet<>();
         List<Object[]> queryResult = routeRepository.sumTotalMoneyPerPassenger();
         for (Object[] obj : queryResult) {
-            Long id = ((BigInteger) obj[0]).longValue();
-            Integer sum = ((BigInteger) obj[1]).intValue();
-            mappedResult.put(id, sum);
+            String destination = obj[0].toString();
+            Long sum = ((BigInteger) obj[1]).longValue();
+            String passengers = obj[2].toString();
+
+            InnerJoin innerJoin = InnerJoin.builder()
+                    .destination(destination)
+                    .totalSum(sum)
+                    .passengers(passengers)
+                    .build();
+            set.add(innerJoin);
         }
-        return mappedResult;
+        return set;
     }
 
     public RouteDtoImpl convertToDTO(Route route) {

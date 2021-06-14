@@ -3,9 +3,10 @@ package com.pretestare.airport.service;
 import com.pretestare.airport.dao.dto.RouteDto;
 import com.pretestare.airport.dao.dto.impl.PassengerDtoImpl;
 import com.pretestare.airport.dao.dto.impl.RouteDtoImpl;
+import com.pretestare.airport.dao.model.InnerJoin;
 
 import java.util.List;
-import java.util.Map;
+import java.util.Set;
 
 public interface RouteService {
     List<RouteDto> findAll();
@@ -20,5 +21,5 @@ public interface RouteService {
 
     List<RouteDtoImpl> findAllByDestinationAndClass(String destination, String typeClass);
 
-    Map<Long, Integer> sumTotalMoneyPerPassenger();
+    Set<InnerJoin> sumTotalMoneyPerPassenger();
 }

@@ -3,6 +3,7 @@ package com.pretestare.airport.controller;
 import com.pretestare.airport.dao.dto.PassengerDto;
 import com.pretestare.airport.dao.dto.impl.PassengerDtoImpl;
 import com.pretestare.airport.dao.dto.impl.RouteDtoImpl;
+import com.pretestare.airport.dao.model.InnerJoin;
 import com.pretestare.airport.service.PassengerService;
 import com.pretestare.airport.service.RouteService;
 import lombok.AllArgsConstructor;
@@ -69,17 +70,9 @@ public class CommonController {
 
     @GetMapping(value = "/task3")
     public String findPassengerAndTotalAmount(Model model) {
-        List<PassengerDto> passengerDtos = passengerService.findAll();
-        Map<Long, Integer> sum = routeService.sumTotalMoneyPerPassenger();
+        Set<InnerJoin> task3 = routeService.sumTotalMoneyPerPassenger();
 
-        for (PassengerDto dto : passengerDtos) {
-            PassengerDtoImpl passengerDto = (PassengerDtoImpl) dto;
-            if (sum.containsKey(passengerDto.getPassengerCode())) {
-                passengerDto.setSum(sum.get(passengerDto.passengerCode));
-            }
-        }
-
-        model.addAttribute("passengers", passengerDtos);
+        model.addAttribute("passengers", task3);
 
         return "task3/task3";
     }

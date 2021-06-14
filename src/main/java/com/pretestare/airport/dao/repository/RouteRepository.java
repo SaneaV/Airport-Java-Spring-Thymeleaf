@@ -12,6 +12,8 @@ public interface RouteRepository extends JpaRepository<Route, Long> {
 
     List<Route> findAllByDestinationAndClassType(String destination, String typeClass);
 
-    @Query(value = "SELECT r.passenger_code, SUM(r.price) FROM Route AS r GROUP BY r.passenger_code", nativeQuery = true)
+    @Query(nativeQuery = true, value = "select destination, SUM(price) as total_sum, GROUP_CONCAT(DISTINCT CONCAT(name,' ', surname)) as passengers\n" +
+            "FROM route INNER JOIN passenger ON route.passenger_code = passenger.passenger_code\n" +
+            "group by destination")
     List<Object[]> sumTotalMoneyPerPassenger();
 }
