@@ -1,4 +1,4 @@
-# airport
+# Airport
 
 This project is a preparation for the final exam at CEITI College. In a develope was used: Java, HTML, CSS, Spring (
 Boot, MVC, Data JPA), H2 database.
