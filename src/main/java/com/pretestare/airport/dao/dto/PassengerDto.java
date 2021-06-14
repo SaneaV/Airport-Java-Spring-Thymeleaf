@@ -1,4 +1,4 @@
 package com.pretestare.airport.dao.dto;
 
-public interface PassengerDto extends Dto{
+public interface PassengerDto extends Dto {
 }

@@ -3,20 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <title>Search Form</title>
-    <link rel="stylesheet" type="text/css" th:href="@{/css/main.css}"/>
+    <link rel="stylesheet" th:href="@{/css/main.css}" type="text/css"/>
 </head>
 <body>
 <div class="mainDiv">
-    <form action="#" th:action="@{/task2}" method="get">
+    <form action="#" method="get" th:action="@{/task2}">
 
         <br>
         <label for="destination">Destination</label>
-        <input type="text" th:name="destination" id="destination" placeholder="destination">
+        <input id="destination" placeholder="destination" th:name="destination" type="text">
         <br><br>
 
         <br>
         <label for="class">Class</label>
-        <input type="text" th:name="class" id="class" placeholder="class">
+        <input id="class" placeholder="class" th:name="class" type="text">
         <br><br>
 
         <input type="submit" value="Find Passenger">

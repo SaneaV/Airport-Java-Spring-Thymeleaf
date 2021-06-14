@@ -9,8 +9,8 @@ import lombok.NoArgsConstructor;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class InnerJoin {
+public class DestinationSumPassengers {
     private String destination;
-    private Long totalSum;
+    private Long sum;
     private String passengers;
 }

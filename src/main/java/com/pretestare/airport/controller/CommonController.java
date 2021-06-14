@@ -1,9 +1,8 @@
 package com.pretestare.airport.controller;
 
 import com.pretestare.airport.dao.dto.PassengerDto;
-import com.pretestare.airport.dao.dto.impl.PassengerDtoImpl;
 import com.pretestare.airport.dao.dto.impl.RouteDtoImpl;
-import com.pretestare.airport.dao.model.InnerJoin;
+import com.pretestare.airport.dao.model.DestinationSumPassengers;
 import com.pretestare.airport.service.PassengerService;
 import com.pretestare.airport.service.RouteService;
 import lombok.AllArgsConstructor;
@@ -15,7 +14,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.HashSet;
 import java.util.List;
-import java.util.Map;
 import java.util.Set;
 
 @Controller
@@ -70,9 +68,9 @@ public class CommonController {
 
     @GetMapping(value = "/task3")
     public String findPassengerAndTotalAmount(Model model) {
-        Set<InnerJoin> task3 = routeService.sumTotalMoneyPerPassenger();
+        Set<DestinationSumPassengers> destinationSumPassengers = routeService.sumTotalMoneyPerPassenger();
 
-        model.addAttribute("passengers", task3);
+        model.addAttribute("passengers", destinationSumPassengers);
 
         return "task3/task3";
     }

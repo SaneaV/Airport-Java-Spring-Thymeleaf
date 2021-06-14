@@ -4,7 +4,7 @@ import com.pretestare.airport.dao.dto.PassengerDto;
 import com.pretestare.airport.dao.dto.RouteDto;
 import com.pretestare.airport.dao.dto.impl.PassengerDtoImpl;
 import com.pretestare.airport.dao.dto.impl.RouteDtoImpl;
-import com.pretestare.airport.dao.model.InnerJoin;
+import com.pretestare.airport.dao.model.DestinationSumPassengers;
 import com.pretestare.airport.dao.model.Passenger;
 import com.pretestare.airport.dao.model.Route;
 import com.pretestare.airport.dao.repository.RouteRepository;
@@ -71,22 +71,22 @@ public class RouteServiceImpl implements RouteService {
     }
 
     @Override
-    public Set<InnerJoin> sumTotalMoneyPerPassenger() {
-        Set<InnerJoin> set = new HashSet<>();
+    public Set<DestinationSumPassengers> sumTotalMoneyPerPassenger() {
+        Set<DestinationSumPassengers> destinationSumPassengersSet = new HashSet<>();
         List<Object[]> queryResult = routeRepository.sumTotalMoneyPerPassenger();
         for (Object[] obj : queryResult) {
             String destination = obj[0].toString();
             Long sum = ((BigInteger) obj[1]).longValue();
             String passengers = obj[2].toString();
 
-            InnerJoin innerJoin = InnerJoin.builder()
+            DestinationSumPassengers destinationSumPassengers = DestinationSumPassengers.builder()
                     .destination(destination)
-                    .totalSum(sum)
+                    .sum(sum)
                     .passengers(passengers)
                     .build();
-            set.add(innerJoin);
+            destinationSumPassengersSet.add(destinationSumPassengers);
         }
-        return set;
+        return destinationSumPassengersSet;
     }
 
     public RouteDtoImpl convertToDTO(Route route) {
